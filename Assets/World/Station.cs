@@ -26,7 +26,7 @@ public class Station : VoxelObject
 	// Arrays.
 	private byte[][] data;
 	private Dictionary<int, GameObject> meshHolders;
-	public Dictionary<Point2, Block>[] block;
+	public Dictionary<Vector2i, Block>[] block;
 	public int[] masses;
 
 	void Awake ()
@@ -106,12 +106,12 @@ public class Station : VoxelObject
 			menu.QuitGame ();
 		}
 
-		block = new Dictionary<Point2, Block>[circumference];
+		block = new Dictionary<Vector2i, Block>[circumference];
 
 		radius = (short)Mathf.RoundToInt (circumference / (2 * Mathf.PI));
 
 		for (int circ = 0; circ < circumference; circ++) {
-			block [circ] = new Dictionary<Point2, Block> (); 
+			block [circ] = new Dictionary<Vector2i, Block> (); 
 		}
 
 		CreateRing (-1);
@@ -124,7 +124,7 @@ public class Station : VoxelObject
 		sbyte height = Height;
 		for (int circ = 0; circ < circumference; circ++) {
 			for (int lengthPass = -length / 2; lengthPass < length / 2; lengthPass++) {
-				Point2 blockPos = new Point2 (lengthPass, height); 
+				Vector2i blockPos = new Vector2i (lengthPass, height); 
 				block [circ].Add (blockPos, new Block ());
 				mass += 100;
 			}
@@ -214,7 +214,7 @@ public class Station : VoxelObject
 
 	// Called externally to change a block.
 	[ClientRpc]
-	public void RpcSetBlock (Point3 Position, byte Type, byte Material)
+	public void RpcSetBlock (Vector3i Position, byte Type, byte Material)
 	{
 		int circumferencePos = Position.x, lengthPos = Position.y, invRadiusPos = Position.z;
 		byte type = Type, material = Material;
@@ -223,7 +223,7 @@ public class Station : VoxelObject
 			return;
 		}
 
-		Point2 blockPos = new Point2 (lengthPos, radius - invRadiusPos);
+		Vector2i blockPos = new Vector2i (lengthPos, radius - invRadiusPos);
 
 		if (circumferencePos == circumference) {
 			circumferencePos = 0;
@@ -293,7 +293,7 @@ public class Station : VoxelObject
 
 		masses [circumferencePos] = 0;
 
-		foreach (Point2 pos in block[circumferencePos].Keys) {
+		foreach (Vector2i pos in block[circumferencePos].Keys) {
 			Block targetBlock;
 			if (block [circumferencePos].TryGetValue (pos, out targetBlock)) {
 				
@@ -315,7 +315,7 @@ public class Station : VoxelObject
 
 		List<Mesh> blockMeshes = new List<Mesh> ();
 
-		Point2 thisPos = new Point2 (lengthPos, radiusPos);
+		Vector2i thisPos = new Vector2i (lengthPos, radiusPos);
 		Block thisBlock;
 		block [circumferencePos].TryGetValue (thisPos, out thisBlock);
 
@@ -324,7 +324,7 @@ public class Station : VoxelObject
 
 		// Face Rendering
 		if (thisBlock.selfFaces [0]) { // +C face
-			Point2 otherPos = new Point2 (lengthPos, radiusPos);
+			Vector2i otherPos = new Vector2i (lengthPos, radiusPos);
 			Block otherBlock;
 			block [(circumferencePos + 1) % (circumference)].TryGetValue (otherPos, out otherBlock);
 
@@ -344,7 +344,7 @@ public class Station : VoxelObject
 		}
 
 		if (thisBlock.selfFaces [1]) { // -C face
-			Point2 otherPos = new Point2 (lengthPos, radiusPos);
+			Vector2i otherPos = new Vector2i (lengthPos, radiusPos);
 			Block otherBlock;
 			int negCircumferencePos = (circumferencePos - 1) % circumference;
 			if (negCircumferencePos < 0) {
@@ -368,7 +368,7 @@ public class Station : VoxelObject
 		}
 
 		if (thisBlock.selfFaces [2]) { // +Y face
-			Point2 otherPos = new Point2 (lengthPos + 1, radiusPos);
+			Vector2i otherPos = new Vector2i (lengthPos + 1, radiusPos);
 			Block otherBlock;
 			block [circumferencePos].TryGetValue (otherPos, out otherBlock);
 
@@ -388,7 +388,7 @@ public class Station : VoxelObject
 		}
 
 		if (thisBlock.selfFaces [3]) { // -Y face
-			Point2 otherPos = new Point2 (lengthPos - 1, radiusPos);
+			Vector2i otherPos = new Vector2i (lengthPos - 1, radiusPos);
 			Block otherBlock;
 			block [circumferencePos].TryGetValue (otherPos, out otherBlock);
 
@@ -407,7 +407,7 @@ public class Station : VoxelObject
 			}
 		}
 		if (thisBlock.selfFaces [4]) { // +R face
-			Point2 otherPos = new Point2 (lengthPos, radiusPos + 1);
+			Vector2i otherPos = new Vector2i (lengthPos, radiusPos + 1);
 			Block otherBlock;
 			block [circumferencePos].TryGetValue (otherPos, out otherBlock);
 
@@ -427,7 +427,7 @@ public class Station : VoxelObject
 		}
 
 		if (thisBlock.selfFaces [5]) { // -R face
-			Point2 otherPos = new Point2 (lengthPos, radiusPos - 1);
+			Vector2i otherPos = new Vector2i (lengthPos, radiusPos - 1);
 			Block otherBlock;
 			block [circumferencePos].TryGetValue (otherPos, out otherBlock);
 

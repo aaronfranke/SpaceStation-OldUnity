@@ -10,12 +10,11 @@ public class PlayerCamera : MonoBehaviour
 	// As this one isn't contained in the prefab, it doesn't get a SerializeField.
 	private GameObject uiMenu;
 
-	[SerializeField] private GameObject playerBody;
-	[SerializeField] private GameObject playerRoot;
-	[SerializeField] private GameObject cameraHolder;
-	[SerializeField] private LocalPlayer localPlayer;
-	[SerializeField] private Commands commands;
-	[SerializeField] private MeshRenderer playerModelMeshRenderer;
+	[SerializeField] private GameObject playerBody = null;
+	[SerializeField] private GameObject cameraHolder = null;
+	[SerializeField] private LocalPlayer localPlayer = null;
+	[SerializeField] private Commands commands = null;
+	[SerializeField] private MeshRenderer playerModelMeshRenderer = null;
 
 	private RaycastHit hit;
 	private Mesh mesh;

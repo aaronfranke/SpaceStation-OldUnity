@@ -24,7 +24,7 @@ public class Commands : NetworkBehaviour
 	{
 		print (Position + " " + Type + " " + Material + " " + ObjectName + " " + Station.stationObject.name);
 		if (Station.stationObject.name.Contains (ObjectName)) {
-			Point3 pos = new Point3 (Position);
+			Vector3i pos = new Vector3i (Position);
 			Station.station.RpcSetBlock (pos, Type, Material);
 		} else {
 			if (shipObject == null || !shipObject.name.Equals (ObjectName)) {
@@ -33,7 +33,7 @@ public class Commands : NetworkBehaviour
 			} 
 			if (shipScript != null) {
 				Vector3 position = shipObject.transform.InverseTransformPoint (Position);
-				Point3 pos = new Point3 (position);
+				Vector3i pos = new Vector3i (position);
 				shipScript.RpcSetBlock (pos, Type, Material);
 			}
 		}

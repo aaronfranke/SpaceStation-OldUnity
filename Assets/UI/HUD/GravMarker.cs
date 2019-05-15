@@ -6,8 +6,7 @@ using UnityEngine;
 public class GravMarker : MonoBehaviour
 {
 	public static GameObject playerRoot;
-	[SerializeField] private GameObject gravTextObject;
-	[SerializeField] private Text gravText;
+	[SerializeField] private Text gravText = null;
 
 	void Update ()
 	{

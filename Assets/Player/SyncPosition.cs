@@ -7,10 +7,9 @@ using UnityEngine;
 public class SyncPosition : NetworkBehaviour
 {
 
-	[SerializeField] private GameObject playerBody;
-	[SerializeField] private Rigidbody physicsRoot;
-	[SerializeField] private LocalPlayer localPlayer;
-	[SerializeField] private Player player;
+	[SerializeField] private GameObject playerBody = null;
+	[SerializeField] private Rigidbody physicsRoot = null;
+	[SerializeField] private Player player = null;
 
 	void Update ()
 	{

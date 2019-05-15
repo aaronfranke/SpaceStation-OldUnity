@@ -7,21 +7,18 @@ using UnityEngine.Networking;
 public class ClientSetup : NetworkBehaviour
 {
 
-	[SerializeField] private GameObject playerRoot;
-	[SerializeField] private GameObject playerBody;
-	[SerializeField] private GameObject playerHead;
-	[SerializeField] private GameObject playerCameraHolder;
-	[SerializeField] private GameObject playerCameraObject;
+	[SerializeField] private GameObject playerRoot = null;
+	[SerializeField] private GameObject playerCameraHolder = null;
 
-	[SerializeField] private Player playerScript;
-	[SerializeField] private LocalPlayer localPlayerScript;
-	[SerializeField] private PlayerCamera playerCameraScript;
-	[SerializeField] private Commands commandsScript;
-	[SerializeField] private SyncPosition syncPosition;
+	[SerializeField] private Player playerScript = null;
+	[SerializeField] private LocalPlayer localPlayerScript = null;
+	[SerializeField] private PlayerCamera playerCameraScript = null;
+	[SerializeField] private Commands commandsScript = null;
+	[SerializeField] private SyncPosition syncPosition = null;
 
-	[SerializeField] private Camera playerCamera;
-	[SerializeField] private FlareLayer playerFlare;
-	[SerializeField] private AudioListener playerAudio;
+	[SerializeField] private Camera playerCamera = null;
+	[SerializeField] private FlareLayer playerFlare = null;
+	[SerializeField] private AudioListener playerAudio = null;
 
 	void Start ()
 	{
