@@ -5,26 +5,27 @@ using UnityEngine;
 
 public class RenderQuality : MonoBehaviour
 {
-	private Dropdown dropdown;
-	private byte renderQuality;
+    private Dropdown dropdown;
+    private byte renderQuality;
 
-	void Start ()
-	{
-		dropdown = GetComponent<Dropdown> ();
+    void Start()
+    {
+        dropdown = GetComponent<Dropdown>();
 
-		if (!PlayerPrefs.HasKey ("RenderQuality")) {
-			PlayerPrefs.SetInt ("RenderQuality", 4);
-		}
-		renderQuality = (byte)PlayerPrefs.GetInt ("RenderQuality");
-		dropdown.value = 5 - renderQuality;
-	}
+        if (!PlayerPrefs.HasKey("RenderQuality"))
+        {
+            PlayerPrefs.SetInt("RenderQuality", 4);
+        }
+        renderQuality = (byte)PlayerPrefs.GetInt("RenderQuality");
+        dropdown.value = 5 - renderQuality;
+    }
 
-	public void SetRenderQuality (int unusedValue)
-	{ 
-		renderQuality = (byte)(5 - dropdown.value);
-		QualitySettings.SetQualityLevel (renderQuality, gameObject.name.Equals ("RenderQualityDropdownMainMenu"));
-		PlayerPrefs.SetInt ("RenderQuality", renderQuality);
-		PlayerPrefs.Save ();
-	}
+    public void SetRenderQuality(int unusedValue)
+    {
+        renderQuality = (byte)(5 - dropdown.value);
+        QualitySettings.SetQualityLevel(renderQuality, gameObject.name.Equals("RenderQualityDropdownMainMenu"));
+        PlayerPrefs.SetInt("RenderQuality", renderQuality);
+        PlayerPrefs.Save();
+    }
 
 }

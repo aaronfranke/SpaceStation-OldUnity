@@ -6,13 +6,13 @@ using UnityEngine;
 
 public class SendData : NetworkBehaviour
 {
-	[TargetRpc]
-	public void TargetSendStuff (NetworkConnection connection)
-	{
-		print ("I've just received a target RPC call!");
-	}
+    [TargetRpc]
+    public void TargetSendStuff(NetworkConnection connection)
+    {
+        print("I've just received a target RPC call!");
+    }
 
-	/*
+    /*
 
 				// Send the data for the station. 
 				ObjMetadata stationMeta = new ObjMetadata (stationObject.transform.localPosition, Vector3.zero, 

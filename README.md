@@ -1,10 +1,8 @@
 # SpaceStation-OldUnity
 
-My prototype first-person voxel multiplayer space game, the old Unity version (made in Unity 2017.2.1f1). Development has ceased as I'm looking into porting this to Godot, but I'm posting my old code here publicly.
+My prototype first-person voxel multiplayer space game, ported to the Oculus Go as an experiment (made in Unity 2019.1).
 
-Download the Windows build here: https://github.com/aaronfranke/SpaceStation-OldUnity/blob/master/windows-build.zip
-
-Download the Linux build here: https://github.com/aaronfranke/SpaceStation-OldUnity/blob/master/linux-build.zip
+To run this project, you will need to own an Oculus Go and set up a dev environment.
 
 You may not use any of the code or assets. Do not modify the code or send any pull requests. Please see the license file for more information.
 

@@ -6,10 +6,10 @@ using UnityEngine.EventSystems;
 
 public class Dismiss : MonoBehaviour
 {
-	public void DismissDialog ()
-	{ 
-		EventSystem.current.SetSelectedGameObject (Menu.lastButtonObject);
-		Destroy (transform.parent.gameObject);
-	}
+    public void DismissDialog()
+    {
+        EventSystem.current.SetSelectedGameObject(Menu.lastButtonObject);
+        Destroy(transform.parent.gameObject);
+    }
 
 }

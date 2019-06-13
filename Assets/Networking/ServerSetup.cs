@@ -9,23 +9,24 @@ using UnityEngine;
 [Serializable]
 public class ServerSetup : NetworkBehaviour
 {
-	public GameObject worldPrefab;
-	public GameObject stationPrefab;
-	public GameObject shipPrefab;
+    public GameObject worldPrefab;
+    public GameObject stationPrefab;
+    public GameObject shipPrefab;
 
-	void Awake ()
-	{
-		if (!NetworkServer.active) {
-			return;
-		}
+    void Awake()
+    {
+        if (!NetworkServer.active)
+        {
+            return;
+        }
 
-		GameObject worldObject = Instantiate (worldPrefab) as GameObject;
-		NetworkServer.Spawn (worldObject);
-		GameObject stationObject = Instantiate (stationPrefab) as GameObject;
-		NetworkServer.Spawn (stationObject);
+        GameObject worldObject = Instantiate(worldPrefab) as GameObject;
+        NetworkServer.Spawn(worldObject);
+        GameObject stationObject = Instantiate(stationPrefab) as GameObject;
+        NetworkServer.Spawn(stationObject);
 
-		GameObject shipObject = Instantiate (shipPrefab) as GameObject;
-		NetworkServer.Spawn (shipObject);
-	}
+        GameObject shipObject = Instantiate(shipPrefab) as GameObject;
+        NetworkServer.Spawn(shipObject);
+    }
 
 }

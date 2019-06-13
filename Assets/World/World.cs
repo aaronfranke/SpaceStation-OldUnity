@@ -9,14 +9,14 @@ using UnityEngine;
 [Serializable]
 public class World : MonoBehaviour
 {
-	public static string worldName = "World";
+    public static string worldName = "World";
 
-	public static GameObject worldObject;
+    public static GameObject worldObject;
 
-	void Awake ()
-	{
-		worldObject = gameObject;
-	}
+    void Awake()
+    {
+        worldObject = gameObject;
+    }
 
 }
 
